@@ -14,7 +14,6 @@ var sub1 = topic.AddServiceBusSubscription("sub1", "az.sub1");
 var sub2 = topic.AddServiceBusSubscription("sub2", "az.sub2");
 
 builder.AddAzureFunctionsProject<Projects.DemoFunctions>("demofunctions")
-    .WithReference(serviceBus)
     .WaitFor(sub1)
     .WaitFor(sub2)
     .WithEnvironment("ServiceBus:ConnectionString", serviceBus);
