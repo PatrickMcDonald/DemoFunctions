@@ -36,6 +36,11 @@ public class Function1(ILogger<Function1> logger, ServiceBusClient serviceBusCli
             }
         }
 
+        logger.LogTrace("This is a trace log for demonstration purposes.");
+        logger.LogDebug("This is a debug log for demonstration purposes.");
+        logger.LogWarning("This is a warning log for demonstration purposes.");
+        logger.LogCritical("This is a critical log for demonstration purposes.");
+
         return new OkObjectResult("Welcome to Azure Functions!");
     }
 }
