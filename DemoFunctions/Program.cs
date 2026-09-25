@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using OpenTelemetry;
 
+AppContext.SetSwitch("Azure.Experimental.EnableActivitySource", true);
+
 var builder = FunctionsApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
