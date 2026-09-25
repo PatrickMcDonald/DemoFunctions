@@ -2,10 +2,10 @@ var builder = DistributedApplication.CreateBuilder(args);
 
 var serviceBus = builder.AddAzureServiceBus("messaging")
     .RunAsEmulator(e => e
-        .WithHostPort(56721)
+        .WithHostPort(61575)
         .WithEndpoint("emulatorhealth", url =>
         {
-            url.Port = 53001;
+            url.Port = 61576;
         }));
 
 var topic = serviceBus.AddServiceBusTopic("topic", "az.topic");
