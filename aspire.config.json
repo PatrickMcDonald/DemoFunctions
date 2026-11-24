@@ -1,5 +1,8 @@
 {
   "appHost": {
     "path": "DemoFunctions.AppHost/DemoFunctions.AppHost.csproj"
+  },
+  "sdk": {
+    "version": "17.0.0"
   }
 }
