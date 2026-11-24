@@ -4,13 +4,16 @@ var builder = DistributedApplication.CreateBuilder(args);
 
 var serviceBus = builder.AddAzureServiceBus("messaging")
     .RunAsEmulator(e => e
+        .WithLifetime(ContainerLifetime.Persistent)
         .WithHostPort(61575)
+        .WithSqlServer(sql => sql.WithDataVolume())
         .WithEndpoint("emulatorhealth", url =>
         {
             url.Port = 61576;
         }));
 
 builder.AddServiceBusViewer("servicebusviewer")
+    .WithLifetime(ContainerLifetime.Persistent)
     .WithServiceBusEmulatorReference(serviceBus);
 
 var topic = serviceBus.AddServiceBusTopic("topic", "az.topic");
