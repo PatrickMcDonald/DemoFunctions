@@ -1,3 +1,5 @@
+using SolidCode.Aspire.Hosting;
+
 var builder = DistributedApplication.CreateBuilder(args);
 
 var serviceBus = builder.AddAzureServiceBus("messaging")
@@ -7,6 +9,9 @@ var serviceBus = builder.AddAzureServiceBus("messaging")
         {
             url.Port = 61576;
         }));
+
+builder.AddServiceBusViewer("servicebusviewer")
+    .WithServiceBusEmulatorReference(serviceBus);
 
 var topic = serviceBus.AddServiceBusTopic("topic", "az.topic");
 
